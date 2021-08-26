@@ -3,6 +3,7 @@
 
 from check import check
 from custom_time import KST, return_korean_weekday
+import requests
 
 weekday = KST.weekday()
 
@@ -16,6 +17,9 @@ def process():
     else:
         check()
 
+def checkReq():
+    r = requests.get('https://hcs.eduro.go.kr/v2/searchSchool?lctnScCode=01&schulCrseScCode=4&orgName=%EC%9D%B8%EC%B0%BD%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90&loginType=school')
+    print(r.text)
 
 if __name__ == '__main__':
-    process()
+    checkReq()
