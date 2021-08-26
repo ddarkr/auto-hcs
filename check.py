@@ -15,5 +15,6 @@ def check():
             print("[!] 자가진단 실패")
             print("message: " + return_data['message'])
             slack.failed(return_data['message'])
-    except:
-        slack.failed('알 수 없는 문제가 발생했습니다.')
+    except Exception as e:
+        slack.failed('[!] 알 수 없는 에러: ' + e)
+        print("message: " + e)
